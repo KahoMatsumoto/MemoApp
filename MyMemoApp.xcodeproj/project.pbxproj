@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					277CC5B21EFBF5C300A20B27 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FJV559UR87;
 						ProvisioningStyle = Automatic;
 					};
 					277CC5C61EFBF5C300A20B27 = {
@@ -418,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FJV559UR87;
 				INFOPLIST_FILE = MyMemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Km.MyMemoApp;
@@ -430,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FJV559UR87;
 				INFOPLIST_FILE = MyMemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Km.MyMemoApp;
@@ -511,6 +514,7 @@
 				277CC5DD1EFBF5C300A20B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277CC5DE1EFBF5C300A20B27 /* Build configuration list for PBXNativeTarget "MyMemoAppTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +523,7 @@
 				277CC5E01EFBF5C300A20B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277CC5E11EFBF5C300A20B27 /* Build configuration list for PBXNativeTarget "MyMemoAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +532,7 @@
 				277CC5E31EFBF5C300A20B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

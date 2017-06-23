@@ -16,7 +16,21 @@ class MemoTableViewController: UITableViewController {
 
 //    var memos =
 //        ["blue", "red", "pink"] // 初期値
-    var memos = [String]()
+    var memos = [[[String: Any]]]()
+    /*
+     [
+        [
+            "note": "memo1"
+            "date": 2017.6.23
+        ],
+        [
+            "note": "memo2"
+            "date": 2017.6.23
+        ],
+            :
+     ]
+     */
+    
     
     
     // saveでメモリストへ画面遷移するときの動作
@@ -24,16 +38,17 @@ class MemoTableViewController: UITableViewController {
     {
         // nilじゃなかったらメモへ追加
         guard let sourceVC = sender.source as?
-            MemoViewController, let memo = sourceVC.memo else
+            MemoViewController, let note = sourceVC.note, let date = sourceVC.date else
             {
             return
         }
         // 編集だったら更新
+        let entry: [[String : Any]] = [["note":note, "date":date]]
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
-            self.memos[selectedIndexPath.row] = memo
+            self.memos[selectedIndexPath.row] = entry
         } else {
             // 新規メモなら追加
-            self.memos.append(memo)
+            self.memos.append(entry)
         }
         // ufへの追加
         self.userDefaults.set(self.memos, forKey: "memos")
@@ -46,10 +61,10 @@ class MemoTableViewController: UITableViewController {
         super.viewDidLoad()
         // objectがnilじゃなかったらmemosに値をセット
         if self.userDefaults.object(forKey: "memos") != nil {
-            self.memos = self.userDefaults.stringArray(forKey: "memos")!
+            self.memos = self.userDefaults.array(forKey: "memos") as! [[[String : Any]]]
         } else {
             // nilだったら初期値をセット
-            self.memos = ["memo1", "memo2", "memo3"]
+//            self.memos = ["memo1", "memo2", "memo3"]
         }
 
         // Uncomment the following line to preserve selection between presentations
@@ -81,7 +96,11 @@ class MemoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = self.memos[indexPath.row]
+        let val = self.memos[indexPath.row]
+        let v = val[0]
+        cell.textLabel?.text = v["note"] as? String
+        let date = v["date"] as! Date
+        cell.detailTextLabel?.text = date.description
 
         return cell
     }
@@ -142,7 +161,10 @@ class MemoTableViewController: UITableViewController {
         if identifier == "editMemo" {
             let memoVC = segue.destination as!
             MemoViewController
-            memoVC.memo = self.memos[(self.tableView.indexPathForSelectedRow?.row)!]
+            let val = self.memos[(self.tableView.indexPathForSelectedRow?.row)!]
+            let v = val[0]
+            memoVC.note = v["note"] as? String
+            memoVC.date = v["date"] as? Date
             
         }
     }

@@ -10,7 +10,8 @@ import UIKit
 
 class MemoViewController: UIViewController {
 
-    var memo: String?
+    var note: String?
+    var date: Date?
     
     // 誤字った
     // テキストフィールド
@@ -22,8 +23,8 @@ class MemoViewController: UIViewController {
         // Do any additional setup after loading the view.
 //        self.saveButton.isEnabled = false
         // memoがnilじゃなかったら編集モード
-        if let memo = self.memo {
-            self.memoTexttField.text = memo
+        if let note = self.note {
+            self.memoTexttField.text = note
             self.navigationItem.title = "Edit Memo"
         }
         self.updateSaveButtonState()
@@ -60,7 +61,8 @@ class MemoViewController: UIViewController {
             return
         }
         // memoに値を設定する
-        self.memo = self.memoTexttField.text ?? ""
+        self.note = self.memoTexttField.text ?? ""
+        self.date = Date()
     }
 
     /*
